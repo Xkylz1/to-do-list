@@ -152,6 +152,50 @@ public class ToDoListApp {
     }
 
     static void deleteTodoList() {
+        isEditing = true;
+        showTodoList();
+
+        System.out.println("-----------------");
+        System.out.print("Pilih Indeks> ");
+        int index = Integer.parseInt(input.nextLine());
+
+        try {
+            if (index > todoLists.size()) {
+                throw new IndexOutOfBoundsException("Kamu memasukan data yang salah!");
+            } else {
+
+                System.out.println("Kamu akan menghapus:");
+                System.out.println(String.format("[%d] %s", index, todoLists.get(index)));
+                System.out.println("Apa kamu yakin?");
+                System.out.print("Jawab (y/t): ");
+                String jawab = input.nextLine();
+
+                if (jawab.equalsIgnoreCase("y")) {
+                    // hapus data
+                    todoLists.remove(index);
+
+                    // tulis ulang file
+                    try {
+                        FileWriter fileWriter = new FileWriter(fileName, false);
+
+                        // write new data
+                        for (String data : todoLists) {
+                            fileWriter.append(String.format("%s%n", data));
+                        }
+                        fileWriter.close();
+
+                        System.out.println("Berhasil dihapus!");
+                    } catch (IOException e) {
+                        System.out.println("Terjadi kesalahan karena: " + e.getMessage());
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        isEditing = false;
+        backToMenu();
     }
 
 }
