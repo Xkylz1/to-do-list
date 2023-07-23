@@ -90,7 +90,7 @@ public class ToDoListApp {
             System.out.println("TODO LIST:");
             int index = 0;
             for (String data : todoLists) {
-                System.out.println(String.format("[%d] %s", index, data));
+                System.out.println(String.format("[%d] %s", index+1, data));
                 index++;
             }
         } else {
@@ -127,7 +127,7 @@ public class ToDoListApp {
         try {
             System.out.println("-----------------");
             System.out.print("Pilih Indeks> ");
-            int index = Integer.parseInt(input.nextLine());
+            int index = Integer.parseInt(input.nextLine())-1;
 
             if (index > todoLists.size()) {
                 throw new IndexOutOfBoundsException("Kamu memasukan data yang salah!");
@@ -169,7 +169,7 @@ public class ToDoListApp {
 
         System.out.println("-----------------");
         System.out.print("Pilih Indeks> ");
-        int index = Integer.parseInt(input.nextLine());
+        int index = Integer.parseInt(input.nextLine())-1;
 
         try {
             if (index > todoLists.size()) {
