@@ -109,6 +109,46 @@ public class ToDoListApp {
     }
 
     static void editTodoList() {
+        isEditing = true;
+        showTodoList();
+
+        try {
+            System.out.println("-----------------");
+            System.out.print("Pilih Indeks> ");
+            int index = Integer.parseInt(input.nextLine());
+
+            if (index > todoLists.size()) {
+                throw new IndexOutOfBoundsException("Kamu memasukan data yang salah!");
+            } else {
+
+                System.out.print("Data baru: ");
+                String newData = input.nextLine();
+
+                // update data
+                todoLists.set(index, newData);
+
+                System.out.println(todoLists.toString());
+
+                try {
+                    FileWriter fileWriter = new FileWriter(fileName, false);
+
+                    // write new data
+                    for (String data : todoLists) {
+                        fileWriter.append(String.format("%s%n", data));
+                    }
+                    fileWriter.close();
+
+                    System.out.println("Berhasil diubah!");
+                } catch (IOException e) {
+                    System.out.println("Terjadi kesalahan karena: " + e.getMessage());
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        isEditing = false;
+        backToMenu();
     }
 
     static void deleteTodoList() {
