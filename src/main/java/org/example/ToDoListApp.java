@@ -16,7 +16,19 @@ public class ToDoListApp {
     static Scanner input;
 
     public static void main(String[] args) {
-//        showMenu();
+        // initialize
+        todoLists = new ArrayList<>();
+        input = new Scanner(System.in);
+
+        String filePath = System.console() == null ? "/src/todolist.txt" : "/todolist.txt";
+        fileName = System.getProperty("user.dir") + filePath;
+
+        System.out.println("FILE: " + fileName);
+
+        // run the program (main loop)
+        while (true) {
+            showMenu();
+        }
     }
 
 
