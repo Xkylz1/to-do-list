@@ -1,6 +1,7 @@
 package org.example;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -55,6 +56,20 @@ public class ToDoListApp {
     }
 
     static void readTodoList() {
+        try {
+            File file = new File(fileName);
+            Scanner fileReader = new Scanner(file);
+
+            // load isi file ke dalam array todoLists
+            todoLists.clear();
+            while (fileReader.hasNextLine()) {
+                String data = fileReader.nextLine();
+                todoLists.add(data);
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Error karena: " + e.getMessage());
+        }
     }
 
     static void showTodoList() {
