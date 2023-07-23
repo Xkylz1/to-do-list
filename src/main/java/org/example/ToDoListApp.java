@@ -16,10 +16,33 @@ public class ToDoListApp {
 
     }
 
-    static void clearScreen(){
-    }
 
     static void showMenu() {
+        System.out.println("=== TODO LIST APP ===");
+        System.out.println("[1] Lihat Todo List");
+        System.out.println("[2] Tambah Todo List");
+        System.out.println("[3] Edit Todo List");
+        System.out.println("[4] Hapus Todo List");
+        System.out.println("[0] Keluar");
+        System.out.println("---------------------");
+        System.out.print("Pilih menu> ");
+
+        String selectedMenu = input.nextLine();
+
+        if (selectedMenu.equals("1")) {
+            showTodoList();
+        } else if (selectedMenu.equals("2")) {
+            addTodoList();
+        } else if (selectedMenu.equals("3")) {
+            editTodoList();
+        } else if (selectedMenu.equals("4")) {
+            deleteTodoList();
+        } else if (selectedMenu.equals("0")) {
+            System.exit(0);
+        } else {
+            System.out.println("Kamu salah pilih menu!");
+            backToMenu();
+        }
     }
 
     static void backToMenu() {
