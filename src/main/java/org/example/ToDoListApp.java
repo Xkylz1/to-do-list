@@ -91,6 +91,21 @@ public class ToDoListApp {
     }
 
     static void addTodoList() {
+        System.out.println("Apa yang ingin kamu kerjakan?");
+        System.out.print("Jawab: ");
+        String newTodoList = input.nextLine();
+
+        try {
+            // tulis file
+            FileWriter fileWriter = new FileWriter(fileName, true);
+            fileWriter.append(String.format("%s%n", newTodoList));
+            fileWriter.close();
+            System.out.println("Berhasil ditambahkan!");
+        } catch (IOException e) {
+            System.out.println("Terjadi kesalahan karena: " + e.getMessage());
+        }
+
+        backToMenu();
     }
 
     static void editTodoList() {
