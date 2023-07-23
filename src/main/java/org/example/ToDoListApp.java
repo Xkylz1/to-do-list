@@ -1,9 +1,11 @@
 package org.example;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 public class ToDoListApp {
 
     // deklarasi variabel global
@@ -13,7 +15,7 @@ public class ToDoListApp {
     static Scanner input;
 
     public static void main(String[] args) {
-
+//        showMenu();
     }
 
 
@@ -46,6 +48,10 @@ public class ToDoListApp {
     }
 
     static void backToMenu() {
+        System.out.println("");
+        System.out.print("Tekan [Enter] untuk kembali..");
+        input.nextLine();
+//        clearScreen();
     }
 
     static void readTodoList() {
