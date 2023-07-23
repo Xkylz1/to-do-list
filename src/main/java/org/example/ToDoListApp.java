@@ -73,6 +73,21 @@ public class ToDoListApp {
     }
 
     static void showTodoList() {
+        readTodoList();
+        if (todoLists.size() > 0) {
+            System.out.println("TODO LIST:");
+            int index = 0;
+            for (String data : todoLists) {
+                System.out.println(String.format("[%d] %s", index, data));
+                index++;
+            }
+        } else {
+            System.out.println("Tidak ada data!");
+        }
+
+        if (!isEditing) {
+            backToMenu();
+        }
     }
 
     static void addTodoList() {
